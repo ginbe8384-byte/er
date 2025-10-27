@@ -60,22 +60,25 @@ public class TheatreManager {
         }
     }
 
-    public static int search(int[] numbers, int searchVal) {
-        boolean found = false;
-        int i = 0;
-        int index = -1;
-        while (!found && i < numbers.length) {
-            if (numbers[i] == searchVal) {
-                found = true;
-                index = i;
-            }
-            i++;
-        }
-        return index;
-    }
+    //Q6.1 - 4 
+    // find the crew member using crewID 
+    public int findCrewMember(int crewID) 
+    { 
+        int pos = 0; 
+        using an appropriate loop 
+        while (pos < size){ 
+            //if crewID matches end search 
+            if (cArr[pos].getCrewID() == crewID) { 
+                return pos; 
+            }             
+            pos++; 
+        } 
+        //return -1 not found 
+        return -1; 
+    } 
 
-    public static String search(String search) {
-        String result = "No matching task found.";
+    public String search(String search) {
+        String result = "No match found.";
 
         // Loop through each Task in the array
         for (int i = 0; i < tArr.length; i++) {
@@ -84,7 +87,6 @@ public class TheatreManager {
             if (tArr[i].getPlay().equalsIgnoreCase(search)) {
                 // If a match is found, return the task name
                 result = tArr[i].getTaskName();
-                break;  // Stop the loop after finding the first match
             }
         }
 
@@ -111,7 +113,7 @@ public class TheatreManager {
         for (int i = 0; i < pSize; i++) {
             int j = 0;
             boolean assigned = false;
-            while (!assigned&& j < tSize) {
+            while (!assigned && j < tSize) {
                 if (pArr[i].getLicense().equals("Local") && tArr[j].getSeats() >= 200){
                     assigned = tArr[j].addPlay(pArr[i]);
                 }
